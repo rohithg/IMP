@@ -1,0 +1,41 @@
+version: 1
+metrics:
+  - name: net_revenue
+    label: Net Revenue
+    description: Sum of settled payment amounts (Finance definition; excludes failed auth).
+    owner: finance-analytics
+    model: sem_finance_daily
+    type: sum
+    sql: net_revenue
+    grain: [metric_date, customer_segment, payment_method]
+    tags: [finance, certified]
+
+  - name: gross_merchandise_value
+    label: Gross Merchandise Value
+    description: Sum of attempted payment amounts before settlement filters.
+    owner: finance-analytics
+    model: sem_finance_daily
+    type: sum
+    sql: gross_merchandise_value
+    grain: [metric_date]
+    tags: [finance, certified]
+
+  - name: payment_success_rate
+    label: Payment Success Rate
+    description: Settled transactions divided by attempted transactions.
+    owner: payments
+    model: sem_finance_daily
+    type: ratio
+    sql: payment_success_rate
+    grain: [metric_date, payment_method]
+    tags: [payments, certified]
+
+  - name: active_customers
+    label: Active Customers
+    description: Distinct customers with at least one settled transaction on the day.
+    owner: growth
+    model: sem_finance_daily
+    type: count_distinct
+    sql: customer_id
+    grain: [metric_date]
+    tags: [growth]
