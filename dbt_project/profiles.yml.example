@@ -1,0 +1,13 @@
+imp_metrics:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: ANALYST
+      database: IMP_DW
+      warehouse: BI_WH
+      schema: analytics
+      threads: 4
