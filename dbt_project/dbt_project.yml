@@ -1,0 +1,20 @@
+name: imp_metrics
+version: 1.0.0
+config-version: 2
+profile: imp_metrics
+
+model-paths: ["models"]
+macro-paths: ["macros"]
+test-paths: ["tests"]
+
+models:
+  imp_metrics:
+    staging:
+      +schema: staging
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+    semantic:
+      +schema: semantic
+      +materialized: view
