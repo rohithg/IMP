@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: sem_finance_daily
+    description: Certified Finance semantic exposure
+    columns:
+      - name: metric_date
+        tests: [not_null]
+      - name: net_revenue
+        description: Settled payment amount (Finance-certified)
+      - name: payment_success_rate
+        description: settled_count / transaction_count
